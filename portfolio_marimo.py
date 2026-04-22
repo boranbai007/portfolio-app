@@ -327,6 +327,41 @@ def _(mo):
     return
 
 @app.cell
+def _(mo):
+    mo.md("## Contact").style({"font-size": "34px", "font-weight": "700"})
+
+    description = mo.md(CONTACT_TEXT).style(
+        {
+            "max-width": "780px",
+            "font-size": "16px",
+            "color": "#4F4D44",
+            "margin-bottom": "8px",
+        }
+    )
+
+    links = mo.hstack(
+        [
+            mo.md(f"[LinkedIn]({PROFILE['linkedin']})"),
+            mo.md(f"[Github]({PROFILE['github']})"),
+            mo.md(f"[Email](mailto:{PROFILE['email']})"),
+            mo.md(f"[Telegram]({PROFILE['telegram']})"),
+        ],
+        wrap=True,
+        gap=8,
+    ).style(
+        {
+            "background": "white",
+            "border-radius": "16px",
+            "padding": "14px 18px",
+            "margin-top": "8px",
+            "display": "inline-flex",
+        }
+    )
+
+    mo.vstack([description, links], gap=4)
+    return
+
+@app.cell
 def _():
     output_path = copy_index_to_output()
     return (output_path,)
