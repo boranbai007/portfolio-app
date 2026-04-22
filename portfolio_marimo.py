@@ -207,6 +207,44 @@ def _(mo):
     )
     return
 
+@app.cell
+def _(mo):
+    mo.md("## Education").style({"font-size": "34px", "font-weight": "700"})
+
+    left = mo.vstack(
+        [
+            mo.md(EDUCATION[0]["name"]).style({"font-size": "24px", "font-weight": "700"}),
+            mo.md(EDUCATION[0]["period"]).style({"color": "#4F4D44", "font-weight": "600"}),
+        ],
+        justify="space-between",
+    ).style(
+        {
+            "background": "white",
+            "border-radius": "16px",
+            "padding": "24px",
+            "min-height": "160px",
+            "flex": "1",
+        }
+    )
+
+    right = mo.vstack(
+        [
+            mo.md(EDUCATION[1]["name"]).style({"font-size": "24px", "font-weight": "700"}),
+            mo.md(EDUCATION[1]["degree"]).style({"color": "#4F4D44", "font-weight": "600"}),
+            mo.md(EDUCATION[1]["period"]).style({"color": "#4F4D44", "font-weight": "600"}),
+        ],
+        gap=8,
+    ).style(
+        {
+            "background": "white",
+            "border-radius": "16px",
+            "padding": "24px",
+            "flex": "1.5",
+        }
+    )
+
+    mo.hstack([left, right], widths=[0.4, 0.6], gap=12).style({"margin-top": "10px"})
+    return
 
 @app.cell
 def _():
