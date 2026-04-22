@@ -1,4 +1,4 @@
-# /// script
+﻿# /// script
 # requires-python = ">=3.13"
 # dependencies = [
 #     "marimo>=0.19.10",
@@ -105,12 +105,12 @@ def copy_index_to_output() -> Path:
     OUTPUT_HTML.write_bytes(INDEX_HTML.read_bytes())
     return OUTPUT_HTML
 
+
 @app.cell
 def _():
     import marimo as mo
 
     return (mo,)
-
 
 
 @app.cell
@@ -207,6 +207,7 @@ def _(mo):
     )
     return
 
+
 @app.cell
 def _(mo):
     mo.md("## Education").style({"font-size": "34px", "font-weight": "700"})
@@ -284,6 +285,7 @@ def _(mo):
     mo.vstack(project_cards, gap=14).style({"margin-top": "10px"})
     return
 
+
 @app.cell
 def _(mo):
     mo.md("## Skills & Tools").style({"font-size": "34px", "font-weight": "700"})
@@ -326,6 +328,7 @@ def _(mo):
     mo.hstack(blocks, gap=12).style({"margin-top": "10px"})
     return
 
+
 @app.cell
 def _(mo):
     mo.md("## Contact").style({"font-size": "34px", "font-weight": "700"})
@@ -360,6 +363,7 @@ def _(mo):
 
     mo.vstack([description, links], gap=4)
     return
+
 
 @app.cell
 def _():
