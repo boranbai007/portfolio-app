@@ -285,6 +285,48 @@ def _(mo):
     return
 
 @app.cell
+def _(mo):
+    mo.md("## Skills & Tools").style({"font-size": "34px", "font-weight": "700"})
+
+    blocks = []
+    for group in SKILL_GROUPS:
+        pills = [
+            mo.md(item).style(
+                {
+                    "display": "inline-block",
+                    "background": "#242424",
+                    "color": "white",
+                    "padding": "8px 18px",
+                    "border-radius": "9999px",
+                    "font-size": "13px",
+                    "font-weight": "600",
+                    "margin-right": "8px",
+                    "margin-bottom": "8px",
+                }
+            )
+            for item in group["items"]
+        ]
+
+        block = mo.vstack(
+            [
+                mo.md(group["title"]).style({"font-size": "26px", "font-weight": "700"}),
+                mo.hstack(pills, wrap=True, gap=4),
+            ],
+            gap=8,
+        ).style(
+            {
+                "background": "white",
+                "border-radius": "16px",
+                "padding": "24px",
+                "flex": "1",
+            }
+        )
+        blocks.append(block)
+
+    mo.hstack(blocks, gap=12).style({"margin-top": "10px"})
+    return
+
+@app.cell
 def _():
     output_path = copy_index_to_output()
     return (output_path,)
