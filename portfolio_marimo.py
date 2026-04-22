@@ -100,6 +100,11 @@ CONTACT_TEXT = (
     "collaboration in finance, business, and analytics."
 )
 
+
+def copy_index_to_output() -> Path:
+    OUTPUT_HTML.write_bytes(INDEX_HTML.read_bytes())
+    return OUTPUT_HTML
+
 @app.cell
 def _():
     import marimo as mo
