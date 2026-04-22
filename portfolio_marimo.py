@@ -112,6 +112,102 @@ def _():
     return (mo,)
 
 
+
+@app.cell
+def _(mo):
+    mo.md("# Salamat Dauletbay Portfolio").style(
+        {
+            "font-size": "40px",
+            "font-weight": "700",
+            "margin-bottom": "12px",
+        }
+    )
+    return
+
+
+@app.cell
+def _(mo):
+    badge = mo.md(PROFILE["title"]).style(
+        {
+            "display": "inline-block",
+            "padding": "6px 20px",
+            "border-radius": "9999px",
+            "background-color": "#242424",
+            "color": "white",
+            "font-weight": "600",
+            "font-size": "14px",
+        }
+    )
+
+    name = mo.md(PROFILE["name"]).style(
+        {
+            "font-size": "56px",
+            "font-weight": "700",
+            "line-height": "1.05",
+            "margin-top": "14px",
+        }
+    )
+
+    summary = mo.md(PROFILE["summary"]).style(
+        {
+            "max-width": "740px",
+            "font-size": "15px",
+            "font-weight": "500",
+            "color": "#4F4D44",
+            "margin-top": "18px",
+        }
+    )
+
+    mo.vstack([badge, name, summary], gap=0).style({"margin-bottom": "28px"})
+    return
+
+
+@app.cell
+def _(mo):
+    contact = mo.md(f"[Contact Me](mailto:{PROFILE['email']})").style(
+        {
+            "display": "inline-block",
+            "padding": "10px 24px",
+            "border-radius": "16px",
+            "background-color": "#242424",
+            "color": "white",
+            "font-weight": "600",
+            "text-decoration": "none",
+            "margin-right": "12px",
+        }
+    )
+
+    linkedin = mo.md(f"[LinkedIn]({PROFILE['linkedin']})").style(
+        {
+            "display": "inline-block",
+            "padding": "10px 24px",
+            "border-radius": "16px",
+            "background-color": "white",
+            "color": "#242424",
+            "font-weight": "600",
+            "text-decoration": "none",
+        }
+    )
+
+    mo.hstack([contact, linkedin], gap=8).style({"margin-bottom": "24px"})
+    return
+
+
+@app.cell
+def _(mo):
+    mo.image(PROFILE["hero_image"]).style(
+        {
+            "max-width": "360px",
+            "width": "100%",
+            "border-radius": "16px",
+            "background": "white",
+            "padding": "10px",
+            "margin-bottom": "28px",
+        }
+    )
+    return
+
+
 @app.cell
 def _():
     output_path = copy_index_to_output()
