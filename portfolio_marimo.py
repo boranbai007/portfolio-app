@@ -246,6 +246,44 @@ def _(mo):
     mo.hstack([left, right], widths=[0.4, 0.6], gap=12).style({"margin-top": "10px"})
     return
 
+
+@app.cell
+def _(mo):
+    mo.md("## Projects").style({"font-size": "34px", "font-weight": "700"})
+
+    project_cards = []
+    for project in PROJECTS:
+        img = mo.image(project["image"]).style(
+            {
+                "width": "100%",
+                "aspect-ratio": "16 / 9",
+                "object-fit": "cover",
+                "border-radius": "16px",
+                "background": "white",
+            }
+        )
+
+        text = mo.vstack(
+            [
+                mo.md(project["title"]).style({"font-size": "26px", "font-weight": "700"}),
+                mo.md(project["type"]).style({"color": "#4F4D44", "font-weight": "600"}),
+                mo.md(project["description"]).style({"color": "#4F4D44", "font-weight": "500"}),
+            ],
+            gap=6,
+        ).style(
+            {
+                "background": "white",
+                "border-radius": "16px",
+                "padding": "24px",
+                "height": "100%",
+            }
+        )
+
+        project_cards.append(mo.hstack([img, text], widths=[0.38, 0.62], gap=12))
+
+    mo.vstack(project_cards, gap=14).style({"margin-top": "10px"})
+    return
+
 @app.cell
 def _():
     output_path = copy_index_to_output()
